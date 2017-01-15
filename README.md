@@ -15,9 +15,9 @@
 - **pyroTX** - скетч ПЕРЕДАТЧИКА (transmitter)
 
 ## Схема подключения
-[ПЕРЕДАТЧИК](https://github.com/AlexGyver/Remote_pyro_control/blob/master/%D0%A1%D1%85%D0%B5%D0%BC%D1%8B/TX_bb.jpg)
+![ПЕРЕДАТЧИК](https://github.com/AlexGyver/Remote_pyro_control/blob/master/%D0%A1%D1%85%D0%B5%D0%BC%D1%8B/TX_bb.jpg)
 
-[ПРИЁМНИК](https://github.com/AlexGyver/Remote_pyro_control/blob/master/%D0%A1%D1%85%D0%B5%D0%BC%D1%8B/RX_bb.jpg)
+![ПРИЁМНИК](https://github.com/AlexGyver/Remote_pyro_control/blob/master/%D0%A1%D1%85%D0%B5%D0%BC%D1%8B/RX_bb.jpg)
 
 ## Видео по теме
 Старая версия самодельного детонатора:
