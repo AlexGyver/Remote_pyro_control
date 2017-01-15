@@ -14,9 +14,6 @@ byte address[][6] = {"1Node", "2Node", "3Node", "4Node", "5Node", "6Node"}; //в
 byte redLED = 14;
 byte greenLED = 15;
 
-int check = 111;
-boolean check_answer;
-
 const byte ROWS = 4; //4 строки у клавиатуры
 const byte COLS = 3; //три столбца
 char keys[4][3] = {
@@ -67,41 +64,11 @@ void loop() {
     delay(10);
     digitalWrite(greenLED, LOW);                          // погасить зелёный светодиод
     digitalWrite(redLED, HIGH);                           // зажечь красный светодиод
-        
+
   } else if (key == '*') {                                // если символ *
-    flag = 0;                                             // опустить флаг
-    
-    digitalWrite(redLED, LOW);                            // погасить красный светодиод
+    flag = 1;                                             // поднять флаг
+    digitalWrite(redLED, HIGH);                           // включить красный светодиод
     digitalWrite(greenLED, LOW);                          // погасить зелёный светодиод
-    delay(100);                                           // задержка для эпичности
-    
-    if ( radio.write(&check, sizeof(check)) ) {           // отправляем значение 111
-      if (!radio.available()) {                           // если не получаем ответ
-        Serial.println("No answer");
-        digitalWrite(greenLED, HIGH);                     // включить зелёный светодиод
-      } else {
-        while (radio.available() ) {                      // если в ответе что-то есть
-          radio.read( &check_answer, 1);                  // читаем
-          if (check_answer == 1) {                        // если статус = 1 (готов к работе)
-            flag = 1;                                     // поднять флаг готовности к работе
-            digitalWrite(redLED, HIGH);                   // зажечь красный светодиод
-            Serial.println("Status OK");
-          } else {                                        // если статус = 0 (акум разряжен)
-            Serial.println("Status BAD");
-            for (int i = 0; i < 5; i++) {                 // моргнуть 6 раз зелёным светодиодом
-              digitalWrite(greenLED, HIGH);
-              delay(200);
-              digitalWrite(greenLED, LOW);
-              delay(100);
-            }
-            digitalWrite(greenLED, HIGH);                 // включить зелёный светодиод при ошибке
-          }
-        }
-      }
-    } else {
-      Serial.println("Sending failed");              // ошибка отправки
-      digitalWrite(greenLED, HIGH);                  // включить зелёный светодиод
-    }
 
   } else if (key == '#') {                        // если символ №
     flag = 0;                                     // опустить флаг

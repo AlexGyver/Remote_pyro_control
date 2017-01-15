@@ -14,11 +14,8 @@ float my_vcc_const = 1.1; // начальное значение констан�
 byte MOSFET[10] = {18, 4, 5, 6, 7, 8, 14, 15, 16, 17};  //массив пинов, к которым подключены мосфеты
 boolean FLAGS[10]; // массив, хранящий время для таймера каждого мосфета? по умолчанию {0,0,0,0,0,0,0,0}
 unsigned long TIMES[10]; // массив, хранящий состояния мосфетов
-byte battery_pin = 6;    // сюда подключен аккумулятор для измерения напряжения
-boolean RXstate;
 
 int fuse_time = 1500;  // время в миллисекундах, которое ток будет подаваться  на спираль
-int battery_check = 2800; // нижняя граница заряда аккумулятора для защиты, в милливольтах!
 
 RF24 radio(9, 10); // "создать" модуль на пинах 9 и 10 Для Уно
 //RF24 radio(9,53); // для Меги
@@ -51,26 +48,17 @@ void setup() {
   radio.startListening();  //начинаем слушать эфир, мы приёмный модуль
 }
 
-void loop() { 
+void loop() {
   byte pipeNo, in_data;
   while ( radio.available(&pipeNo)) {             // слушаем эфир со всех труб
     radio.read( &in_data, sizeof(in_data) );      // читаем входящий сигнал
-    Serial.println(in_data);    
 
-    if (in_data == 111) {
-      int voltage = analogRead(battery_pin) * readVcc() / 1024;
-      if (voltage > battery_check) RXstate = 1; else RXstate = 0;
-      
-      radio.writeAckPayload(pipeNo, &RXstate, sizeof(RXstate) );
-      Serial.println("Check state sent");
-    } else {
-      if (FLAGS[in_data] == 0) {
-        FLAGS[in_data] = 1;                           // поднять флаг для мосфета, по входящему сигналу
-        TIMES[in_data] = millis();                    // запомнить время прихода сигнала
-        digitalWrite(MOSFET[in_data], HIGH);          // подать питание на мосфет (на запал)
+    if (FLAGS[in_data] == 0) {
+      FLAGS[in_data] = 1;                           // поднять флаг для мосфета, по входящему сигналу
+      TIMES[in_data] = millis();                    // запомнить время прихода сигнала
+      digitalWrite(MOSFET[in_data], HIGH);          // подать питание на мосфет (на запал)
 
-        Serial.print("Fuse #"); Serial.print(in_data); Serial.println(" ON");
-      }
+      Serial.print("Fuse #"); Serial.print(in_data); Serial.println(" ON");
     }
   }
 
@@ -81,25 +69,4 @@ void loop() {
       Serial.print("Fuse #"); Serial.print(i); Serial.println(" OFF");
     }
   }
-}
-
-long readVcc() { //функция чтения внутреннего опорного напряжения, универсальная (для всех ардуин)
-#if defined(__AVR_ATmega32U4__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
-  ADMUX = _BV(REFS0) | _BV(MUX4) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1);
-#elif defined (__AVR_ATtiny24__) || defined(__AVR_ATtiny44__) || defined(__AVR_ATtiny84__)
-  ADMUX = _BV(MUX5) | _BV(MUX0);
-#elif defined (__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
-  ADMUX = _BV(MUX3) | _BV(MUX2);
-#else
-  ADMUX = _BV(REFS0) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1);
-#endif
-  delay(2); // Wait for Vref to settle
-  ADCSRA |= _BV(ADSC); // Start conversion
-  while (bit_is_set(ADCSRA, ADSC)); // measuring
-  uint8_t low  = ADCL; // must read ADCL first - it then locks ADCH
-  uint8_t high = ADCH; // unlocks both
-  long result = (high << 8) | low;
-
-  result = my_vcc_const * 1023 * 1000 / result; // расчёт реального VCC
-  return result; // возвращает VCC
 }
