@@ -33,30 +33,30 @@
 Всё указанное ниже можно найти здесь
 http://alexgyver.ru/arduino_shop/
 
-* Arduino NANO 2 шт. https://ali.ski/FvADC
+* Arduino NANO 2 шт. https://ali.ski/2tl01
 
-* Модуль связи мощный 2 шт. https://ali.ski/g4r1jy
-* Или модуль связи мини 2 шт. https://ali.ski/bF7CL
-* Адаптер питания 2 шт. https://ali.ski/6B0fW
-* Или такой 2 шт. https://ali.ski/_Zn5N
+* Модуль связи мощный 2 шт. https://ali.ski/P5Fvs
+* Или модуль связи мини 2 шт. https://ali.ski/-6IWjq
+* Адаптер питания 2 шт. https://ali.ski/N9tWHu
+* Или такой 2 шт. https://ali.ski/3BVQ8
 
 * Акумы на выбор, 2шт. http://alexgyver.ru/18650/
-* Холдер под 18650 2 шт. https://ali.ski/LXzk4N
-* Модуль повыш. до 5В 2 шт. https://ali.ski/tDlN_p
-* Модуль защиты акума https://ali.ski/AyJ9L
+* Холдер под 18650 2 шт. https://ali.ski/VkefzP
+* Модуль повыш. до 5В 2 шт. https://ali.ski/jOArt
+* Модуль защиты акума https://ali.ski/4JwuP
 
-* Клавиатура 4х3 мембр. https://ali.ski/JHk1m
-* Клавиатура 4х3 механ. https://ali.ski/eS9n_4
-* Светодиодов пачка https://ali.ski/EqUFuA
-* Резисторов пачка https://ali.ski/kOJWKl
-* Выключатели https://ali.ski/bVdr8
-* Корпус как на видео https://ali.ski/jO-w2y
+* Клавиатура 4х3 мембр. https://ali.ski/oF4VN
+* Клавиатура 4х3 механ. https://ali.ski/wUPgai
+* Светодиодов пачка https://ali.ski/lMksXV
+* Резисторов пачка https://ali.ski/44Cvd
+* Выключатели https://ali.ski/NXpUq3
+* Корпус как на видео https://ali.ski/H_r63
 
-* Макетки как на видео https://ali.ski/wDenX
-* Мосфеты 10 шт. https://ali.ski/WUa_2
-* Резисторы 100 Ом https://ali.ski/xAOuV
-* Клеммник пружинный! https://ali.ski/tsCSR9
-* Провод из видео (1 мм) https://ali.ski/-7dW7Y
+* Макетки как на видео https://ali.ski/jw8pkU
+* Мосфеты 10 шт. https://ali.ski/lI2mpi
+* Резисторы 100 Ом https://ali.ski/3tq22
+* Клеммник пружинный! https://ali.ski/6L-lB
+* Провод из видео (1 мм) https://ali.ski/3VTwE
 * Провод всех размеров, кусачки, припой, паяльники и куча всего для пайки http://alexgyver.ru/all-for-soldering/
 
 ## Вам также пригодится 
